@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            background-color: #b3b3b3;
+        }
+        .container {
+            max-width: 500px;
+            min-height: 90vh;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Обновляем атрибут max input на основе значения из span</h2>
+        <!-- INPUT -->
+        <input type="number" min="0.1" max="" id="myInput" placeholder="">
+        <span id="maxValueSpan">500</span>
+
+    </div>
+
+    <script>
+        // Получаем ссылки на элементы input и span
+        const inputElement = document.getElementById("myInput");
+        const spanElement = document.getElementById("maxValueSpan");
+
+        // Функция для установки максимального значения в placeholder
+        function setMaxValueAsPlaceholder() {
+            const maxValue = parseFloat(spanElement.textContent); // Преобразуем текст span в число
+            inputElement.placeholder = "Max: " + maxValue; // Добавляем текст в placeholder
+            inputElement.setAttribute("max", maxValue); // Добавляем текст в атрибут max
+        }
+
+        // Ваш код для обновления span с API, например:
+        function updateValueFromAPI(newValue) {
+            spanElement.textContent = newValue;
+            setMaxValueAsPlaceholder(); // Вызываем функцию для установки максимального значения в placeholder
+        }
+
+        // Пример обновления значения span с API
+        updateValueFromAPI(600); // Обновляем span с новым значением
+    </script>
+</body>
+
+</html>
